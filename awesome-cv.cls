@@ -408,7 +408,7 @@
         {}%
         {%
           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{http://\@homepage}{\faHome\acvHeaderIconSep\@homepage}%
+          \href{http://cs.unc.edu/~cd}{\faHome\acvHeaderIconSep\@homepage}%
         }%
       \ifthenelse{\isundefined{\@github}}%
         {}%
@@ -530,10 +530,15 @@
         \multicolumn{1}{L{\textwidth}}{\descriptionstyle{#5}}}
       {\ifempty{#2#3}
           {\entrypositionstyle{#1} & \entrydatestyle{#4} \\}
-          {\entrytitlestyle{#2} & \entrylocationstyle{#3} \\
-            \entrypositionstyle{#1} & \entrydatestyle{#4} \\}
+          {\ifempty{#1#4}
+            {\entrytitlestyle{#2} & \entrylocationstyle{#3} \\}
+            {\entrytitlestyle{#2} & \entrylocationstyle{#3} \\
+              \entrypositionstyle{#1} & \entrydatestyle{#4} \\}}
         \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}}}
   \end{tabular*}%
+  \ifempty{#5}
+    {\vspace{-4.0mm}}
+    {}
 }
 
 % Define an environment for cvsubentry
